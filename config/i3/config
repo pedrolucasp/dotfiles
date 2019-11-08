@@ -1,0 +1,71 @@
+set $mod Mod4
+
+new_window pixel 1
+new_float normal
+
+hide_edge_borders none
+
+default_floating_border none
+
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
+
+#font xft:SF-Mono-Regular 12
+
+bindsym $mod+t exec kitty
+
+bindsym $mod+Shift+q kill
+
+# Rofi
+
+bindsym Ctrl+space exec --no-startup-id rofi -show drun
+
+###########
+
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Logout?' -b 'Yep' 'i3-msg exit'"
+
+gaps inner 16
+gaps outer 8
+
+smart_borders on
+
+# change focus
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal
+bindsym $mod+g split h
+
+# split vertically
+
+bindsym $mod+v split v
+
+# WORKSPACES
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+
+# move this container to workspace
+
+#bindsym $mod+Shift+1 move container to workspace 1
+#bindsym $mod+Shift+2 move container to workspace 2
+#bindsym $mod+Shift+3 move container to workspace 3
+
+# restart i3
+
+bindsym $mod+Shift+r restart
+
+exec_always --no-startup-id "$HOME/bin/bar"
