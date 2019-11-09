@@ -1,3 +1,2 @@
 alias vim=nvim
-alias please=sudo
-alias install=pacman -S
+alias ls="ls --color=auto --group-directories-first"
