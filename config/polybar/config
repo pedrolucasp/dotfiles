@@ -16,7 +16,7 @@ font-0 = SF Mono:size=11:antialias=true;2
 
 modules-left   = date
 modules-center = time separator time
-modules-right  = vol separator bat
+modules-right  = vol separator bat separator net
 
 spacing             = 1
 padding-left        = 1
@@ -52,6 +52,12 @@ scroll-down = ~/bin/vol -d
 type     = custom/script
 interval = 1.0
 exec     = ~/bin/bat
+
+[module/net]
+type       = custom/script
+interval   = 5.0
+exec       = ~/bin/net
+click-left = kitty nmtui 
 
 [module/separator]
 type = custom/script
