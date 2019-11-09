@@ -1,16 +1,21 @@
 call plug#begin()
 " Writing/Prose
-Plug 'reedes/vim-pencil',       { 'for': ['text', 'markdown'] }
-Plug 'reedes/vim-wordy',        { 'for': ['text', 'markdown'] }
-Plug 'junegunn/goyo.vim',       { 'for': ['text', 'markdown'] }
+
+Plug 'reedes/vim-pencil', { 'for': ['text', 'markdown'] }
+Plug 'reedes/vim-wordy', { 'for': ['text', 'markdown'] }
+Plug 'junegunn/goyo.vim', { 'for': ['text', 'markdown'] }
 Plug 'plasticboy/vim-markdown', { 'for': ['text', 'markdown'] }
 
-" Coding
 Plug 'wellle/targets.vim'
+Plug 'andreypopp/vim-colors-plain', { 'branch': 'master' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 " Basic Settings
+
+set background=dark
+colorscheme plain
 
 set swapfile
 set dir=/tmp
@@ -39,6 +44,9 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set nocompatible
+
+" Open FZF
+nmap ; :Files <CR>
 
 " Vim Pencil 
 
