@@ -64,6 +64,13 @@ bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
 
+# resize
+
+bindsym $mod+Ctrl+h resize shrink width 10px
+bindsym $mod+Ctrl+l resize grow width 10px
+bindsym $mod+Ctrl+j resize shrink height 10px
+bindsym $mod+Ctrl+k resize grow height 10px
+
 # restart i3
 
 bindsym $mod+Shift+r restart
