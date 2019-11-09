@@ -1,0 +1,19 @@
+#!/bin/bash
+
+current_brightness=`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`
+
+if [ "$current_brightness" != 0.9 ] || [ "$current_brightness" != 0.2 ]; then
+  if [ "$1" = i ]; then
+#  echo "Increasing..."
+#  echo $current_brightness
+
+  echo "Called to up" >> ~/aaa
+
+  xrandr --output eDP-1 --brightness $(echo "$current_brightness+0.1" | bc)
+
+  else
+    echo "Decreasing..." >> ~/aaa
+    xrandr --output eDP-1 --brightness  $(echo "$current_brightness-0.1" | bc)
+
+  fi
+fi

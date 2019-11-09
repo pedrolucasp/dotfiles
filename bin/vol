@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+while getopts idq options
+do
+  
+  case $options in
+    i) 
+      pamixer -i 2
+      ;;
+
+    d)
+      pamixer -d 2
+      ;;
+
+    q)
+      cur_vol=$(pamixer --get-volume-human)
+        echo -ne "$cur_vol"
+        ;;
+
+  esac
+done

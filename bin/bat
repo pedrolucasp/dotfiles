@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+label="#999999"
+alert="#FF0000"
+text="#FFFFFF"
+
+cap=$(cat /sys/class/power_supply/BAT0/capacity)
+status=$(cat /sys/class/power_supply/BAT0/status)
+
+if [[ "$status" = "Charging" ]]; then
+  echo -ne "%{F$label}bat %{F$text}+$cap%"
+else
+  if [[ "$cap" -lt 40 ]]; then
+    echo -ne "%{F$label}bat %{F$alert}$cap%"
+  else
+    echo -ne "%{F$label}bat %{F$text}$cap%"
+  fi
+fi
