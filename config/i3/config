@@ -60,12 +60,20 @@ bindsym $mod+3 workspace 3
 
 # move this container to workspace
 
-#bindsym $mod+Shift+1 move container to workspace 1
-#bindsym $mod+Shift+2 move container to workspace 2
-#bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
 
 # restart i3
 
 bindsym $mod+Shift+r restart
 
 exec_always --no-startup-id "$HOME/bin/bar"
+
+exec_always --no-startup-id "$HOME/bin/setdbg"
+
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
+
+bindsym XF86MonBrightnessUp exec "~/bin/bri i"
+bindsym XF86MonBrightnessDown exec "~/bin/bri d"
