@@ -57,12 +57,17 @@ bindsym $mod+v split v
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
 
 # move this container to workspace
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+
 
 # resize
 
@@ -84,3 +89,14 @@ bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 
 bindsym XF86MonBrightnessUp exec "~/bin/bri i"
 bindsym XF86MonBrightnessDown exec "~/bin/bri d"
+
+# print
+
+bindsym Print exec "scrot -f"
+
+# executions
+
+exec_always dunst
+
+
+
