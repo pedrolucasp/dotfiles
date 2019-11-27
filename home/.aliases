@@ -1,3 +1,3 @@
-alias scrot="scrot '$HOME/pics/shots/shot-%Y-%m-%dT%H%M%S.png'"
 alias vim=nvim
 alias ls="ls --color=auto --group-directories-first"
+alias gsummary="git log --author=pedrolucasporcellis@gmail.com --format='- %B' --since=20days --reverse"

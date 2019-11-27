@@ -68,6 +68,8 @@ bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 
+bindsym $mod+Control+Mod1+h move workspace to output primary
+bindsym $mod+Control+Mod1+l move workspace to output VGA-1
 
 # resize
 
