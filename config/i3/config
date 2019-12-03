@@ -14,12 +14,12 @@ bindsym $mod+n border normal
 #font xft:SF-Mono-Regular 12
 
 bindsym $mod+t exec kitty
-
 bindsym $mod+Shift+q kill
 
 # Rofi
 
 bindsym Ctrl+space exec --no-startup-id rofi -show drun
+bindsym Ctrl+$mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 ###########
 
@@ -78,6 +78,8 @@ bindsym $mod+Ctrl+l resize grow width 10px
 bindsym $mod+Ctrl+j resize shrink height 10px
 bindsym $mod+Ctrl+k resize grow height 10px
 
+bindsym $mod+Shift+space floating toggle
+
 # restart i3
 
 bindsym $mod+Shift+r restart
@@ -95,10 +97,10 @@ bindsym XF86MonBrightnessDown exec "~/bin/bri d"
 # print
 
 bindsym Print exec "scrot -f"
+bindsym Shift+Print exec "scrot -f -s"
 
 # executions
 
 exec_always dunst
-
-
+exec --no-startup-id greenclip daemon>/dev/null
 
