@@ -1,3 +1,10 @@
+alias server="rails s"
+alias console="rails c"
+alias migrate="rake db:migrate"
+
+alias j="z"
+alias go="j"
+
 alias vim=nvim
 alias ls="ls --color=auto --group-directories-first"
 alias gsummary="git log --author=pedrolucasporcellis@gmail.com --format='- %B' --since=20days --reverse"
