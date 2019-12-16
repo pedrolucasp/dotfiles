@@ -51,6 +51,8 @@ bindsym $mod+g split h
 
 bindsym $mod+v split v
 
+bindsym $mod+f fullscreen toggle global
+
 # WORKSPACES
 
 # switch to workspace
@@ -96,8 +98,11 @@ bindsym XF86MonBrightnessDown exec "~/bin/bri d"
 
 # print
 
-bindsym Print exec "scrot -f"
-bindsym Shift+Print exec "scrot -f -s"
+bindsym Print exec scrot
+bindsym --release Shift+Print exec "scrot -s"
+
+# lock
+bindsym Ctrl+Shift+l exec "i3lock -p default -n -i ~/pics/lock.png"
 
 # executions
 
