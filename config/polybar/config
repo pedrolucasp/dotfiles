@@ -9,6 +9,7 @@ override-redirect = true
 position = top
 
 [bar/luna]
+monitor = ${env:MONITOR:}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -32,6 +33,7 @@ interval          = 1.0
 exec              = date "+%a, %d %b"
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
+click-left = kitty calcurse
 
 [module/time]
 type              = custom/script
