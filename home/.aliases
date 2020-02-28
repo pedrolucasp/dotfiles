@@ -1,10 +1,19 @@
 alias server="rails s"
 alias console="rails c"
 alias migrate="rake db:migrate"
+alias wthr="curl 'wttr.in/Pelotas?0'"
+alias did="vim +'normal Go' +'r!date' ~/docs/did.txt"
 
 alias j="z"
-alias go="j"
 
 alias vim=nvim
 alias ls="ls --color=auto --group-directories-first"
 alias gsummary="git log --author=pedrolucasporcellis@gmail.com --format='- %B' --since=20days --reverse"
+
+# Git related
+
+alias gds="git diff --staged"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gp="git push"
+alias glog="git log --pretty"
