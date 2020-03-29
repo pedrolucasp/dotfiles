@@ -1,72 +1,159 @@
 [colors]
-background = ${xrdb:color0}
-foreground = #FFFFFF
+primary = #8aa4f0
+background = #121314
+foreground = #aaaaaa
+background-focused = ${colors.primary}
+foreground-focused = ${colors.background}
+background-alt = #2b2c2e
+foreground-alt = #9ab4ef
+background-urgent = #ff8376
+foreground-urgent = ${colors.background}
 
-[global/wm]
-margin-top = 0
-margin-bottom = 0
-override-redirect = true
-position = top
+[settings]
+format-padding = 1
 
 [bar/luna]
 monitor = ${env:MONITOR:}
+width = 100%
+height = 31
 background = ${colors.background}
 foreground = ${colors.foreground}
+wm-restack = i3
 
-font-0 = SF Mono:size=11:antialias=true;2
+font-0 = Hack Nerd Font Mono:size=11;4
+font-1 = Hack:size=17;2
 
-modules-left   = date separator i3
-modules-center = time 
-modules-right  = vol separator bat separator net separator powermenu
+modules-left = i3 mpd
 
-spacing             = 1
-padding-left        = 1
-padding-right       = 1
-module-margin-left  = 0
-module-margin-right = 0
+modules-right = pulseaudio separator bat separator net separator date separator time separator powermenu
 
-; ---------------- modules -------------------
+[module/mpd]
+type = internal/mpd
+
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = 127.0.0.1
+port = 6600
+
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone> (deprecated)
+;   <icon-single> - Toggle playing only a single song. Replaces <icon-repeatone>
+;   <icon-consume>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <label-song>
+
+; Available tags:
+;   <label-offline>
+; Default: ""
+;format-offline = <label-offline>
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song =  %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+;label-time = %elapsed% / %total%
+
+; Available tokens:
+;   None
+label-offline = 🎜 mpd is offline
+
+; Only applies if <icon-X> is used
+icon-play = 
+icon-pause = 
+icon-stop = 栗
+icon-prev = 玲
+icon-next = 怜
+icon-seekb = 
+icon-seekf = 
+icon-random = 
+icon-repeat = 凌
+icon-repeatone = 綾
+icon-single = 綾
+icon-consume = 
+
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+; Only applies if <bar-progress> is used
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/pulseaudio]
+type = internal/pulseaudio
+label-volume =  %percentage%%
+label-muted = 婢 M
 
 [module/date]
-type              = custom/script
-interval          = 1.0
-exec              = date "+%a, %d %b"
+type              = internal/date 
+date              = "%a, %d %b"
+label             =  %date%
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
-click-left = kitty calcurse
-
-[module/time]
-type              = custom/script
-interval          = 1.0
-exec              = date +%I:%M
-format-padding    = 0
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
-
-[module/vol]
-type        = custom/script
-interval    = 0.01
-exec        = ~/bin/vol -q
-scroll-up   = ~/bin/vol -i
-scroll-down = ~/bin/vol -d
-
-[module/bat]
-type     = custom/script
-interval = 1.0
-exec     = ~/bin/bat
+click-left = urxvt -e calcurse
 
 [module/net]
 type       = custom/script
 interval   = 5.0
 exec       = ~/bin/net
-click-left = kitty nmtui 
+click-left = rofi-wifi-menu.sh
 
-[module/separator]
-type = custom/script
-format-text = <label>
-label = " / "
-exec = echo label
-format-foreground = #666666
+[module/bat]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full =  <label-full>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-framerate = 400
+
+[module/time]
+type = internal/date
+label =  %date%
+date = %H:%M%
 
 
 [module/i3]
@@ -104,8 +191,40 @@ label-urgent = %index%
 label-urgent-background = #f1f000
 label-urgent-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
+
+[module/i3new]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+format-padding = 0
+label-padding = 2
+label-focused = %name%
+label-focused-background = ${colors.background-focused}
+label-focused-foreground = ${colors.foreground-focused}
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-background = ${colors.background-focused}
+label-unfocused-foreground = ${colors.foreground-focused}
+label-unfocused-padding = 2
+label-occupied = %name%
+label-occupied-background = ${colors.background-alt}
+label-occupied-foreground = ${colors.foreground-alt}
+label-occupied-padding = 2
+label-urgent = %name%
+label-urgent-background = ${colors.background-urgent}
+label-urgent-foreground = ${colors.foreground-urgent}
+label-urgent-padding = 2
+label-empty = %name%
+label-empty-padding = 2
+
+[module/separator]
+type = custom/script
+format-text = <label>
+label = "/"
+exec = echo label
+format-foreground = #666666
+
 
 [module/powermenu]
 type = custom/menu
@@ -114,26 +233,21 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = power 
+label-open = 漣 
 label-open-foreground = #CCC
 label-close = cancel
 label-close-foreground = #f10
 label-separator = |
 label-separator-foreground = #eee
 
-menu-0-0 = reboot
+menu-0-0 = power
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
+menu-0-1 = lock
+menu-0-1-exec = slock &
+
+menu-1-0 = power off
+menu-1-0-exec = sudo poweroff
+
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-
