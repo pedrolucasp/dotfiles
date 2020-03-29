@@ -75,16 +75,19 @@ URxvt.keysym.Control-Shift-V: perl:clipboard:paste_escaped
 URxvt.keysym.Control-V: perl:clipboard:paste
 
 !! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.perl-lib: /home/pedrolucas/.urxvt/
+URxvt.perl-ext: mark-and-yank
+URxvt.perl-ext-common: default,clipboard,keyboard-select
+URxvt.copyCommand: xclip -sel clip
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: badwolf
+URxvt.keysym.M-u: perl:mark-and-yank:activate_mark_url_mode
+URxvt.keysym.M-y: perl:mark-and-yank:activate_mark_mode
+URxvt.urlLauncher: firefox 
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
 
@@ -96,19 +99,48 @@ URxvt.matcher.button  : 1
 ! ------------------------------------------------------------------------------
 rofi.color-enabled: true
 
-rofi.color-window:    base00 , base00 , base00 , base00 , base03
-rofi.color-normal:    base00 , base03 , base00 , base00 , base07
-rofi.color-active:    base03 , base0E , base00 , base0B , base00
-rofi.color-urgent:    base00 , base03 , base00 , base00 , base03
 
-rofi.fake-transparency : true
-rofi.columns           : 1
-rofi.separator-style   : none
-rofi.hide-scrollbar    : true
-rofi.location          : 0
-rofi.yoffset           : 20
-rofi.xoffset           : 20
-rofi.padding           : 42
-rofi.fullscreen        : false
-rofi.width             : 500
-rofi.lines             : 6
+rofi.color-normal:                   argb:ff0d0f12, #dfdfdf, argb:00000099, argb:ff0d0f12,#973B53
+
+! State:                                 'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-urgent:                   argb:00000000, #D75656, argb:00000000, #FFFFFF, #FFFFFF
+
+rofi.color-active:                   argb:00000000, #487173, #000000, argb:00000000, #973b53
+
+rofi.color-window:                   argb:ff0d0f12, #FFF, argb:ffdfdfdf
+!                                    'background', 'border', 'separator'
+
+rofi.width             : 90
+rofi.lines             : 10
+rofi.columns           : 3
+rofi.padding           : 50
+rofi.font              : Hack 10 
+rofi.modi              : window,run,drun
+
+rofi.bw: 0
+rofi.br: 5
+rofi.location: 0
+rofi.yoffset: -200
+
+rofi.fixed-num-lines:                false
+rofi.terminal:                       urxvt
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+rofi.run-command:                    {cmd}
+rofi.parse-hosts:                    true
+rofi.matching:                       normal
+rofi.separator-style:                none
+rofi.scrollbar-width:                2
+rofi.kb-mode-next:                   Shift+Right,Control+Tab,Alt+l,bracketright,
+rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Alt+h,bracketleft,
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k
+rofi.kb-row-down:                    Down,Control+n,Alt+j
+rofi.display-window:                 Currently Open
+rofi.display-run:                    Execute
+rofi.display-drun:                   Applications
+rofi.eh:                             1
+rofi.line-margin:                    2
+rofi.line-padding:                   3
+rofi.opacity: 100
+
+
