@@ -25,7 +25,12 @@ font-1 = Hack:size=17;2
 
 modules-left = i3 mpd
 
-modules-right = pulseaudio separator bat separator net separator date separator time separator powermenu
+modules-right = pacupdates separator pulseaudio separator bat separator net separator date separator time separator powermenu
+
+[module/pacupdates]
+type       = custom/script
+interval   = 120.0
+exec       = ~/bin/pacupdates
 
 [module/mpd]
 type = internal/mpd
@@ -68,6 +73,8 @@ format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <ico
 ;   %title%
 ; Default: %artist% - %title%
 label-song =  %artist% - %title%
+
+label-song-maxlen = 40
 
 ; Available tokens:
 ;   %elapsed%

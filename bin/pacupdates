@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+status=$( pacman -Qu -q | wc -l )
+
+echo -ne " $status"
