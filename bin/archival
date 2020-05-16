@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd /usr/local/archive
+sites=`ls | sort -rn`
+is_mounted=`mount | grep -q /run/media/pedrolucas/Driver`
+
+for site in $sites
+do
+  echo "Archiving $site"
+  wget -mkEpnp $site
+  echo "Done archiving $site \n"
+done
+
+if [ is_mounted ]; then
+  echo "Mirroring offsite...\n"
+  rsync -Cavz . /run/media/pedrolucas/Driver/Archival
+else
+  echo "Finishing up..."
+fi
