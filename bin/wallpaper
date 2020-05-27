@@ -1,0 +1,15 @@
+#!/bin/sh
+
+new_wallpaper=`ls ~/pics/walls | shuf | head -n 1`
+
+if [ -L ~/pics/wall ];
+  then
+    echo "Removing current bg"
+    unlink ~/pics/wall
+fi
+
+echo "Linking the new one ~/pics/walls/$new_wallpaper"
+
+ln -s "/home/pedrolucas/pics/walls/$new_wallpaper" "/home/pedrolucas/pics/wall"
+
+setdbg
