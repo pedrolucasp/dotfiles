@@ -15,6 +15,7 @@ bindsym $mod+n border normal
 
 bindsym $mod+t exec alacritty 
 bindsym $mod+Return exec qutebrowser
+bindsym $mod+e exec pcmanfm
 
 bindsym $mod+Shift+q kill
 
@@ -24,11 +25,9 @@ bindsym Ctrl+space exec --no-startup-id rofi -show drun -sidebar-mode
 bindsym Ctrl+$mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+Shift+p exec rofi-pass
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
-bindsym $mod+e exec rofimoji 
+bindsym $mod+Shift+e exec rofimoji 
 
 ###########
-
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Logout?' -b 'Yep' 'i3-msg exit'"
 
 gaps inner 5
 gaps outer 8
@@ -106,15 +105,15 @@ bindsym XF86MonBrightnessDown exec "~/bin/bri d"
 
 # print
 
-bindsym Print exec scrot
-bindsym --release Shift+Print exec "scrot -s"
-bindsym --release Ctrl+Shift+Print exec "scrot -s '%Y-%m-%d_$wx$h.png' -e 'ix $f'"
+bindsym Print exec capandpost
+bindsym --release Shift+Print exec "capandpost -s"
+bindsym --release Ctrl+Shift+Print exec "capandpost -s"
 
 # lock
-bindsym Ctrl+Shift+l exec --no-startup-id slock
+bindsym Ctrl+Shift+l exec --no-startup-id lockscreen 
 
 # shrugh
-bindsym $mod+s exec 'echo "¯\_(ツ)_/¯" | xclip -sel -clip'
+bindsym $mod+s exec quick-shrug 
 
 # executions
 
@@ -122,6 +121,8 @@ exec_always dunst
 exec --no-startup-id greenclip daemon>/dev/null
 exec --no-startup-id redshift -l -31.79:-52.74 &
 exec --no-startup-id /usr/sbin/mpd&
-exec --no-startup-id udiskie -NaT
+
+# Somehow this fuck up all my disks
+#exec --no-startup-id udiskie -NaT
 
 exec_always --no-startup-id xrdb ~/.Xresources

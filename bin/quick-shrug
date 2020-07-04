@@ -1,0 +1,3 @@
+#!/bin/sh -eu
+
+echo "¯\_(ツ)_/¯" | xclip -sel -clip

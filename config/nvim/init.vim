@@ -7,6 +7,7 @@ Plug 'reedes/vim-litecorrect', { 'for': ['text', 'markdown']  }
 Plug 'reedes/vim-pencil', { 'for': ['text', 'markdown'] }
 Plug 'reedes/vim-wordy', { 'for': ['text', 'markdown'] }
 Plug 'junegunn/goyo.vim', { 'for': ['text', 'markdown'] }
+Plug 'junegunn/limelight.vim'
 Plug 'plasticboy/vim-markdown', { 'for': ['text', 'markdown'] }
 Plug 'reedes/vim-textobj-quote'
 Plug 'kana/vim-textobj-user', { 'for': ['text', 'markdown'] }
@@ -25,8 +26,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'arrufat/vala.vim'
 
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'ntk148v/vim-horizon'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -39,7 +42,7 @@ call plug#end()
 syntax on
 set t_Co=256
 set cursorline
-colorscheme onehalfdark
+colorscheme horizon
 let g:airline_theme='onehalfdark'
 
 if exists('+termguicolors')
@@ -91,15 +94,25 @@ nnoremap \\ :noh<cr>
 nnoremap Q <Nop>
 nnoremap <C-PageUp> :tabnext <cr>
 nnoremap <C-PageDown> :tabprevious <cr>
+nmap <Leader>w :set list!<CR>
+set listchars=tab:▸\ ,eol:¬,space:.
 
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Open FZF
-nmap ; :Files <CR>
+nmap ; :GFiles --cached --others --exclude-standard <CR>
+
+" Disable Folding
+let g:vim_markdown_folding_disabled=1
 
 " Vim Pencil 
 
 let g:pencil#textwidth=72 " FTW
 let g:pencil#conceallevel=0
+
+nnoremap <silent> Q gqap
+xnoremap <silent> Q gq
+nnoremap <silent> <leader>Q vapJgqap
 
 " Preferences for various files
 
@@ -130,3 +143,11 @@ augroup END
 
 " Status Line
 scriptencoding utf-8
+
+" Limelight
+
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!

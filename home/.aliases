@@ -1,8 +1,11 @@
-alias server="rails s"
-alias console="rails c"
+alias server="rvm use && rails s"
+alias console="rvm use && rails c"
 alias migrate="rake db:migrate"
 alias wthr="curl 'wttr.in/Pelotas?0'"
 alias did="vim +'normal Go' +'r!date' ~/docs/did.txt"
+alias todo="todo.sh"
+alias mutte="mutt -F ~/.eletrotupi"
+alias glow="\glow -p -w 72"
 
 alias j="z"
 

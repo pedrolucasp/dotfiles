@@ -1,0 +1,10 @@
+#!/bin/sh -eu
+
+current_date=$(date +%Y-%m-%d_%H-%M-%S)
+filename="$HOME/${current_date}_shot.png"
+
+echo $filename
+maim $filename $@
+ix $filename | head -n 1 | xclip -sel clip
+
+notify-send "Screenshot uploaded" -t 3000

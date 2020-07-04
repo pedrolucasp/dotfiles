@@ -260,7 +260,7 @@ menu-0-0 = power
 menu-0-0-exec = menu-open-1
 
 menu-0-1 = lock
-menu-0-1-exec = slock &
+menu-0-1-exec = lockscreen &
 
 menu-1-0 = power off
 menu-1-0-exec = sudo poweroff

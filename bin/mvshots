@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+mv $HOME/*shot.png $HOME/pics/shots
